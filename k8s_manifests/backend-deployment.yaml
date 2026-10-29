@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: workshop/backend:local
+        image: sidd24/backend:latest
         imagePullPolicy: IfNotPresent
         env:
           - name: MONGO_CONN_STR

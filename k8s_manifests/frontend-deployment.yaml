@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: workshop/frontend:local
+        image: sidd24/frontend:latest
         imagePullPolicy: IfNotPresent
         env:
           - name: REACT_APP_BACKEND_URL
