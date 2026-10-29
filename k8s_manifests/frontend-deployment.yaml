@@ -23,10 +23,12 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: public.ecr.aws/l0l7e4u1/3-tier-frontend:latest
-        imagePullPolicy: Always
+        image: workshop/frontend:local
+        imagePullPolicy: IfNotPresent
         env:
           - name: REACT_APP_BACKEND_URL
-            value: "backend:8080" # assuming backend service is on port 8080
+            value: "http://172.20.198.241:31662/api/tasks" # assuming backend service is on port 8080
+          - name: BROWSER
+            value: "none"
         ports:
         - containerPort: 3000

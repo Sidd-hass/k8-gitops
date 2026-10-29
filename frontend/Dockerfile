@@ -4,6 +4,9 @@ FROM node:14
 # Set the working directory in the container
 WORKDIR /usr/src/app
 
+ARG REACT_APP_BACKEND_URL
+ENV REACT_APP_BACKEND_URL=$REACT_APP_BACKEND_URL
+
 # Copy the package.json and package-lock.json files to the container
 COPY package*.json ./
 

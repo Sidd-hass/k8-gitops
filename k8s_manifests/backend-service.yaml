@@ -1,13 +1,14 @@
----
 apiVersion: v1
 kind: Service
 metadata:
   name: backend
   namespace: workshop
 spec:
-  ports:
-  - port: 8080
-    protocol: TCP
-  type: ClusterIP
+  type: NodePort
   selector:
-   role: backend
+    role: backend
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+      nodePort: 31662
