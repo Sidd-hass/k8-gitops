@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: workshop
+  labels:
+    role: frontend
+    env: demo
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 25%
+  selector:
+    matchLabels:
+      role: frontend
+  template:
+    metadata:
+      labels:
+        role: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: sidd24/frontend:latest
+        imagePullPolicy: IfNotPresent
+        env:
+          - name: REACT_APP_BACKEND_URL
+            value: "http://172.20.198.241:31662/api/tasks" # assuming backend service is on port 8080
+          - name: BROWSER
+            value: "none"
+        ports:
+        - containerPort: 3000
